@@ -13,7 +13,7 @@ return res
 
 --#ENDPOINT POST /timeseries/command
 local res = {}
-local q = request.parameters.sql
+local q = request.body.sql
 res = Timeseries.command({q = q})
 return res
 
