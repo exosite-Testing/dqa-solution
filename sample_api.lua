@@ -42,3 +42,24 @@ return res
 
 --#ENDPOINT GET /customer
 return 'There is Murano, over'
+
+--#ENDPOINT GET /user/listRoles
+response.message = User.listRoles()
+
+--#ENDPOINT POST /user/createRole
+local parameters = {role_id = request.body.id}
+response = User.createRole(parameters)
+
+--#ENDPOINT GET /user/listusers
+response.message = User.listUsers(parameters)
+
+--#ENDPOINT POST /user/createUser
+local parameters = {
+ name = request.body.name,
+ email = request.body.email,
+ password = request.body.password
+ }
+response = User.createUser(parameters)
+
+--#ENDPOINT GET /user/socialList
+response.message = User.socialList()
