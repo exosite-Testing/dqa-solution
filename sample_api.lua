@@ -65,47 +65,17 @@ response = User.createUser(parameters)
 response.message = User.socialList()
 
 
---#ENDPOINT GET /timer/schedule
-local parameters =
-  {message = "qwer",timer_id = "he",duration = 1 * 1000,schedule = {daily = "true"}}
-if Timer.schedule() == nil then
-  response.message = Timer.schedule(parameters)
-else
-  response.message = Timer.schedule(parameters)
-  local cancelparameters =
-  {timer_id = "he"}
-  response = Timer.cancel(cancelparameters)
-end
+--#ENDPOINT POST /timer/schedule
+response.message = Timer.schedule(request.body)
 
---#ENDPOINT GET /timer/sendAfter
-local parameters =
-  {message = "qwer",timer_id = "Af",duration = 1 * 1000,schedule = {daily = "true"}}
-if Timer.schedule() == nil then
-  response.message = Timer.sendAfter(parameters)
-else
-  response.message = Timer.sendAfter(parameters)
-  local cancelparameters =
-  {timer_id = "Af"}
-  response = Timer.cancel(cancelparameters)
-end
+--#ENDPOINT POST /timer/sendAfter
+response.message = Timer.sendAfter(request.body)
 
---#ENDPOINT GET /timer/sendInterval
-local parameters =
-  {message = "qwer",timer_id = "In",duration = 1 * 1000,schedule = {daily  = "true"}}
-if Timer.schedule() == nil then
-  response.message = Timer.sendInterval(parameters)
-else
-  response.message = Timer.sendInterval(parameters)
-  local cancelparameters =
-  {timer_id = "In"}
-  response = Timer.cancel(cancelparameters)
-end
+--#ENDPOINT POST /timer/sendInterval
+response.message = Timer.sendInterval(request.body)
 
---#ENDPOINT GET /timer/cancel
-local parameters = {
- timer_id = "quis anim aute"
- }
-response.message = Timer.cancel(parameters)
+--#ENDPOINT POST /timer/cancel
+response.message = Timer.cancel(request.body)
 
 --#ENDPOINT GET /timer/cancelAll
 response.message = Timer.cancelAll()
