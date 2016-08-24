@@ -47,8 +47,14 @@ return 'There is Murano, over'
 response.message = User.listRoles()
 
 --#ENDPOINT POST /user/createRole
-local parameters = {role_id = request.body.id}
-response = User.createRole(parameters)
+local t = tostring(request.body.name)
+if t ~= "nil" then
+  local parameters = {role_id = request.body.id , parameter = {request.body.name}}
+  return User.createRole(parameters)
+else
+  local parameters = {role_id = request.body.id}
+  return User.createRole(parameters)
+end
 
 --#ENDPOINT GET /user/listusers
 response.message = User.listUsers(parameters)
