@@ -50,10 +50,10 @@ response.message = User.listRoles()
 local t = tostring(request.body.name)
 if t ~= "nil" then
   local parameters = {role_id = request.body.id , parameter = {request.body.name}}
-  return User.createRole(parameters)
+  response = User.createRole(parameters)
 else
   local parameters = {role_id = request.body.id}
-  return User.createRole(parameters)
+  response = User.createRole(parameters)
 end
 
 --#ENDPOINT GET /user/listusers
