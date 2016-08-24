@@ -56,7 +56,7 @@ else
   response = User.createRole(parameters)
 end
 
---#ENDPOINT GET /user/listusers
+--#ENDPOINT GET /user/listUsers
 response.message = User.listUsers(parameters)
 
 --#ENDPOINT POST /user/createUser
