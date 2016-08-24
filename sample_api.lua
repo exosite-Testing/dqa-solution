@@ -70,6 +70,14 @@ response = User.createUser(parameters)
 --#ENDPOINT GET /user/socialList
 response.message = User.socialList()
 
+--#ENDPOINT POST /user/createSocial
+local parameters = {
+  consumer = request.body.consumer,
+  redirect = request.body.redirect,
+  client_id = request.body.id,
+  client_secret = request.body.secret
+}
+return User.createSocial(parameters)
 
 --#ENDPOINT POST /timer/schedule
 response.message = Timer.schedule(request.body)
