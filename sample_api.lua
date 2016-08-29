@@ -134,7 +134,7 @@ local parameters = {
   ["end_point"] = request.body.endpoint,
   method = request.body.method
 }
-return User.createPermission(parameters)
+response = User.createPermission(parameters)
 
 --#ENDPOINT POST /user/getRole
 local parameters = {
