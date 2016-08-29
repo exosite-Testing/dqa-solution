@@ -87,7 +87,7 @@ return User.getCurrentUser(parameters)
 
 --#ENDPOINT POST /user/getUser
 local parameters = {
-  id = 1
+  id = request.body.id
 }
 return User.getUser(parameters)
 
