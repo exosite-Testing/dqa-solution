@@ -124,7 +124,7 @@ response = User.activateUser({["code"] = activation_code})
 local parameters = {
  ["role_id"] = request.body.id
  }
-response = User.deleteRole(parameters)
+response.message = User.deleteRole(parameters)
 
 --#ENDPOINT GET /user/listPerms
 return User.listPerms()
