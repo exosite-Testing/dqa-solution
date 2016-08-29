@@ -103,6 +103,15 @@ response.message = User.updateUser(parameters)
 local parameters = {id = 1}
 response.message = User.deleteUser(parameters)
 
+--#ENDPOINT GET /user/deleteUser
+local parameters = {
+  consumer = request.body.consumer,
+  redirect = request.body.redirect,
+  id = request.body.id,
+  secret = request.body.secret
+}
+response.message = User.deleteSocial(parameters)
+
 --#ENDPOINT POST /timer/schedule
 response.message = Timer.schedule(request.body)
 
