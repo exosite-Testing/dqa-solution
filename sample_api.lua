@@ -99,8 +99,8 @@ local parameters = {
 }
 response.message = User.updateUser(parameters)
 
---#ENDPOINT GET /user/deleteUser
-local parameters = {id = 1}
+--#ENDPOINT POST /user/deleteUser
+local parameters = {id = request.body.id}
 response.message = User.deleteUser(parameters)
 
 --#ENDPOINT POST /user/deleteSocial
@@ -120,6 +120,12 @@ local parameters = {
 }
 local activation_code = User.createUser(parameters)
 response = User.activateUser({["code"] = activation_code})
+
+--#ENDPOINT POST /user/deleteRoless
+local parameters = {
+ ["role_id"] = request.body.id
+ }
+response = User.deleteRole(parameters)
 
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
