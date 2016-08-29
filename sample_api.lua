@@ -126,6 +126,29 @@ local parameters = {
  }
 response = User.deleteRole(parameters)
 
+--#ENDPOINT GET /user/listPerms
+return User.listPerms()
+
+--#ENDPOINT POST /user/createPrems
+local parameters = {
+  ["end_point"] = request.body.endpoint,
+  method = request.body.method
+}
+return User.createPermission(parameters)
+
+--#ENDPOINT POST /user/getRole
+local parameters = {
+  role_id = request.body.id
+}
+response.message = User.getRole(parameters)
+
+--#ENDPOINT POST /user/getUserToken
+local parameters = {
+  email = request.body.email,
+  password = request.body.password
+}
+return User.getUserToken(parameters)
+
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
 response.message = resp
