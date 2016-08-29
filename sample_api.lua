@@ -79,6 +79,30 @@ local parameters = {
 }
 return User.createSocial(parameters)
 
+--#ENDPOINT POST /user/getCurrentUser
+local parameters = {
+  token = User.getUserToken({email=request.body.email, password=request.body.password})
+}
+return User.getCurrentUser(parameters)
+
+--#ENDPOINT POST /user/getUser
+local parameters = {
+  id = 1
+}
+return User.getUser(parameters)
+
+--#ENDPOINT POST /user/updateUser
+local parameters = {
+  id = 1,
+  status = 0,
+  name = request.body.name,
+}
+response.message = User.updateUser(parameters)
+
+--#ENDPOINT GET /user/deleteUser
+local parameters = {id = 1}
+response.message = User.deleteUser(parameters)
+
 --#ENDPOINT POST /timer/schedule
 response.message = Timer.schedule(request.body)
 
