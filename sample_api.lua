@@ -46,7 +46,7 @@ response.message = User.listRoles()
 --#ENDPOINT POST /user/createRole
 local t = tostring(request.body.name)
 if t ~= "nil" then
-  local parameters = {role_id = request.body.id , parameter = {request.body.name}}
+  local parameters = {role_id = request.body.id , parameter = {{name=request.body.name}}}
   response = User.createRole(parameters)
 else
   local parameters = {role_id = request.body.id}
@@ -155,6 +155,41 @@ local parameters = {
 }
 return User.deletePerm(parameters)
 
+--#ENDPOINT POST /user/listUserRoles
+response.message = User.listUserRoles({id = request.body.id})
+
+--#ENDPOINT POST /user/assignUser
+local parameters = {
+  id = request.body.userid,
+  roles = {
+    {
+      role_id = request.body.roleid,
+      parameters = {
+        {
+          name = request.body.name,
+          value = request.body.value
+        }
+      }
+    }
+  }
+}
+response.message = User.assignUser(parameters)
+
+--#ENDPOINT POST /user/getSocial
+local parameters = {
+  consumer = requset.body.consumer
+}
+response.message = User.getSocial(parameters)
+
+--#ENDPOINT POST /user/updateSocial
+local parameters = {
+  consumer = request.body.consumer,
+  redirect = request.body.redirect,
+  client_id = request.body.id,
+  client_secret = request.body.secret
+}
+return User.updateSocial(parameters)
+
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
 response.message = resp
@@ -172,97 +207,21 @@ response.message = Timer.cancel(request.body)
 --#ENDPOINT GET /timer/cancelAll
 response.message = Timer.cancelAll()
 
---#ENDPOINT POST /twilio/listCall
-local out = Twilio.listCall({
-  AccountSid = request.body.AccountSid,
-  AuthToken = request.body.AuthToken
-})
-response.message = out
+--#ENDPOINT POST /twilio/postMessage
+local parameters = {
+  From = request.body.From,
+  To = request.body.To,
+  Body = request.body.Body
+}
+response.message = Twilio.postMessage(parameters)
 
 --#ENDPOINT POST /twilio/createCall
-local out = Twilio.createCall({
+local parameters = {
   From = request.body.From,
   To = request.body.To,
-  Url = request.body.Url,
-  AccountSid = request.body.AccountSid,
-  AuthToken = request.body.AuthToken
- })
-response.message = out
-
---#ENDPOINT POST /twilio/listMessage
-local out = Twilio.listMessage({
-  AccountSid = request.body.AccountSid,
-  AuthToken = request.body.AuthToken
-})
-response.message = out
-
---#ENDPOINT POST /twilio/postMessage
-local out = Twilio.postMessage({
-  From = request.body.From,
-  To = request.body.To,
-  Body = request.body.Body,
-  AccountSid = request.body.AccountSid,
-  AuthToken = request.body.AuthToken
-})
-response.message = out
-
---#ENDPOINT POST /twilio/getCall
-local parameters ={
-  CallSid = request.body.CallSid,
-  AccountSid = request.body.AccountSid,
-  AuthToken = request.body.AuthToken
-}
-response.message = Twilio.getCall(parameters)
-
---#ENDPOINT POST /twilio/deleteCall
-local parameters ={
-  CallSid = request.body.CallSid,
-  AccountSid = request.body.AccountSid,
-  AuthToken = request.body.AuthToken
-}
-response.message = Twilio.deleteCall(parameters)
-
---#ENDPOINT POST /twilio/getMessage
-local parameters ={
-  MessageSid = request.body.MessageSid,
-  AccountSid = request.body.AccountSid,
-  AuthToken = request.body.AuthToken
-}
-response.message = Twilio.getMessage(parameters)
-
---#ENDPOINT POST /twilio/deleteMessage
-local parameters ={
-  MessageSid = request.body.MessageSid,
-  AccountSid = request.body.AccountSid,
-  AuthToken = request.body.AuthToken
-}
-response.message = Twilio.deleteMessage(parameters)
-
---#ENDPOINT POST /twilio/listMedia
-local parameters ={
-  MessageSid = request.body.MessageSid,
-  AccountSid = request.body.AccountSid,
-  AuthToken = request.body.AuthToken
-}
-response.message = Twilio.listMedia(parameters)
-
---#ENDPOINT POST /twilio/getMedia
-local parameters ={
-  MessageSid = request.body.MessageSid,
-  MediaSid = request.body.MediaSid,
-  AccountSid = request.body.AccountSid,
-  AuthToken = request.body.AuthToken
-}
-response.message = Twilio.getMedia(parameters)
-
---#ENDPOINT POST /twilio/deleteMedia
-local parameters ={
-  MessageSid = request.body.MessageSid,
-  MediaSid = request.body.MediaSid,
-  AccountSid = request.body.AccountSid,
-  AuthToken = request.body.AuthToken
-}
-response.message = Twilio.deleteMedia(parameters)
+  Url = request.body.Url
+ }
+response.message = Twilio.createCall(parameters)
 
 --#ENDPOINT GET /twilio/createTwiml
 xml = [[
@@ -275,48 +234,3 @@ response.message = xml
 
 --#ENDPOINT GET /keystore/info
 response.message = Keystore.info()
-
---#ENDPOINT GET /email
-local parameters = {
-  from = "testing@exosite.com",
-  to = {
-    "testing@exosite.com",
-  },
-  subject = "Hello",
-  text = "World",
-}
-
-return  Email.send(parameters)
-
---#ENDPOINT GET /email/info
-response.message = Email.getSettings()
-
---#ENDPOINT POST /device/rpcCall
-local pid = request.body.pid
-local sn = request.body.sn
-local resource = request.body.res
-
-local calls = {}
-local ret = Device.rpcCall({pid = pid, calls = {{
-  id = "1",
-  procedure = "lookup",
-  arguments = {"alias", tostring(sn)}
-}}})
-if type(ret) ~= "table" then
-  return "error in lookup rpc call"
-end
-
-if ret[1].status ~= "ok" then
-  return "error in lookup: "..ret[1].result
-end
-local rid = ret[1].result
-for k, alias in ipairs(resource) do
-  table.insert(calls, {id=alias, procedure="read", arguments={{alias=alias}, {limit=1}}})
-end
-local rpcret = Device.rpcCall({
-  pid = pid,
-  auth = {client_id = rid},
-  calls = calls
-})
-
-return rpcret
