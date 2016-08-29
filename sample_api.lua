@@ -93,10 +93,10 @@ return User.getUser(parameters)
 
 --#ENDPOINT POST /user/updateUser
 local parameters = {
-  id = request.body.id
-  name = request.body.name
-  password = request.body.password
-  original_password = request.body.oldpassword
+  id = request.body.id,
+  name = request.body.name,
+  password = request.body.password,
+  original_password = request.body.oldpassword,
   status = request.body.status
 }
 response.message = User.updateUser(parameters)
