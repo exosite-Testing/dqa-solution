@@ -103,7 +103,11 @@ response.message = User.updateUser(parameters)
 local parameters = {id = 1}
 response.message = User.deleteUser(parameters)
 
+<<<<<<< HEAD
 --#ENDPOINT GET /user/deleteUser
+=======
+--#ENDPOINT POST /user/deleteSocial
+>>>>>>> 532a713... Add user solution about search user (Issue: DQA-494)
 local parameters = {
   consumer = request.body.consumer,
   redirect = request.body.redirect,
