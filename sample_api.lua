@@ -149,6 +149,12 @@ local parameters = {
 }
 return User.getUserToken(parameters)
 
+--#ENDPOINT POST /user/deletePerms
+local parameters = {
+  ["perm_id"] = request.body.permid
+}
+return User.deletePerm(parameters)
+
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
 response.message = resp
