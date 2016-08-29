@@ -112,6 +112,15 @@ local parameters = {
 }
 response.message = User.deleteSocial(parameters)
 
+--#ENDPOINT POST /user/activateUsdr
+local parameters = {
+  name = request.body.name,
+  email = request.body.email,
+  password = request.body.password
+}
+local activation_code = User.createUser(parameters)
+response = User.activateUser({["code"] = activation_code})
+
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
 response.message = resp
