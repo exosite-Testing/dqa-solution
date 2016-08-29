@@ -121,7 +121,7 @@ local parameters = {
 local activation_code = User.createUser(parameters)
 response = User.activateUser({["code"] = activation_code})
 
---#ENDPOINT POST /user/deleteRoless
+--#ENDPOINT POST /user/deleteRole
 local parameters = {
  ["role_id"] = request.body.id
  }
