@@ -131,7 +131,7 @@ return User.listPerms()
 
 --#ENDPOINT POST /user/createPrems
 local parameters = {
-  ["end_point"] = request.body.endpoint,
+  end_point = request.body.endpoint,
   method = request.body.method
 }
 response = User.createPermission(parameters)
