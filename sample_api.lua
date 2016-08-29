@@ -112,7 +112,7 @@ local parameters = {
 }
 response.message = User.deleteSocial(parameters)
 
---#ENDPOINT POST /user/activateUsdr
+--#ENDPOINT POST /user/activateUser
 local parameters = {
   name = request.body.name,
   email = request.body.email,
