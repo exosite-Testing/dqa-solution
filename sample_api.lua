@@ -77,7 +77,7 @@ local parameters = {
   client_id = request.body.id,
   client_secret = request.body.secret
 }
-response User.createSocial(parameters)
+response = User.createSocial(parameters)
 
 --#ENDPOINT POST /user/getCurrentUser
 local parameters = {
