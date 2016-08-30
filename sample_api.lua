@@ -113,7 +113,9 @@ local parameters = {
 response.message = User.deleteSocial(parameters)
 
 --#ENDPOINT POST /timer/schedule
-response.message = Timer.schedule(request.body)
+resp = Timer.schedule(request.body)
+response.message = resp
+response.code = resp.status
 
 --#ENDPOINT POST /timer/sendAfter
 response.message = Timer.sendAfter(request.body)
