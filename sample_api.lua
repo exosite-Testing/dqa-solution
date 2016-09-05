@@ -27,11 +27,11 @@ return Keystore.clear()
 local res = Keystore.set({key=request.body.key, value=request.body.value})
 return res
 
---#ENDPOINT GET /keystore/{key}
+--#ENDPOINT GET /keystore/key/{key}
 res = Keystore.get({key=request.parameters.key})
 return res
 
---#ENDPOINT DELETE /keystore/{key}
+--#ENDPOINT DELETE /keystore/key/{key}
 res = Keystore.delete({key=request.parameters.key})
 return res
 
