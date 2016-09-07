@@ -160,7 +160,7 @@ local parameters = {
   To = request.body.To,
   Url = request.body.Url
  }
-return.message Twilio.createCall(parameters)
+response.message Twilio.createCall(parameters)
 
 --#ENDPOINT GET /twilio/createTwiml
 xml = [[
