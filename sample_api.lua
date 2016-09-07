@@ -145,3 +145,28 @@ response.message = Timer.cancel(request.body)
 
 --#ENDPOINT GET /timer/cancelAll
 response.message = Timer.cancelAll()
+
+--#ENDPOINT POST /twilio/postMessage
+local parameters = {
+  From = request.body.From,
+  To = request.body.To,
+  Body = request.body.Body
+}
+response.message = Twilio.postMessage(parameters)
+
+--#ENDPOINT POST /twilio/createCall
+local parameters = {
+  From = request.body.From,
+  To = request.body.To,
+  Url = request.body.Url
+ }
+return.message Twilio.createCall(parameters)
+
+--#ENDPOINT GET /twilio/createTwiml
+xml = [[
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Say voice="woman">You got a call!</Say>
+</Response>
+]]
+response.message = xml
