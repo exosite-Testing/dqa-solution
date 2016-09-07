@@ -40,9 +40,6 @@ local command = request.body
 res = Keystore.command(command)
 return res
 
---#ENDPOINT GET /customer
-return 'There is Murano, over'
-
 --#ENDPOINT GET /user/listRoles
 response.message = User.listRoles()
 
