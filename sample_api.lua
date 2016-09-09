@@ -167,3 +167,7 @@ xml = [[
 </Response>
 ]]
 response.message = xml
+
+--#ENDPOINT GET /keystore/info
+response.message = Keystore.info()
+
