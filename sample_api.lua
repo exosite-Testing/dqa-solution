@@ -180,7 +180,7 @@ local out = Twilio.listCall({
 response.message = out
 
 --#ENDPOINT POST /twilio/createCall
-local out = Twilio.createCall ({
+local out = Twilio.createCall({
   From = request.body.From,
   To = request.body.To,
   Url = request.body.Url,
