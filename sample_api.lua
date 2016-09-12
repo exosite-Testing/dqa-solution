@@ -172,21 +172,74 @@ response.message = Timer.cancel(request.body)
 --#ENDPOINT GET /timer/cancelAll
 response.message = Timer.cancelAll()
 
---#ENDPOINT POST /twilio/postMessage
-local parameters = {
-  From = request.body.From,
-  To = request.body.To,
-  Body = request.body.Body
-}
-response.message = Twilio.postMessage(parameters)
+--#ENDPOINT GET /twilio/listCall
+local out = Twilio.listCall()
+response.message = out
 
 --#ENDPOINT POST /twilio/createCall
-local parameters = {
+local out = Twilio.createCall ({
   From = request.body.From,
   To = request.body.To,
   Url = request.body.Url
- }
-response.message = Twilio.createCall(parameters)
+ })
+response.message = out
+
+--#ENDPOINT GET /twilio/listMessage
+local out = Twilio.listMessage()
+response.message = out
+
+--#ENDPOINT POST /twilio/postMessage
+local out = Twilio.postMessage({
+  From = request.body.From,
+  To = request.body.To,
+  Body = request.body.Body
+})
+response.message = out
+
+--#ENDPOINT POST /twilio/getCall
+local parameters ={
+    CallSid = request.body.CallSid
+}
+response.message = Twilio.getCall(parameters)
+
+--#ENDPOINT POST /twilio/deleteCall
+local parameters ={
+    CallSid = request.body.CallSid
+}
+response.message = Twilio.deleteCall(parameters)
+
+--#ENDPOINT POST /twilio/getMessage
+local parameters ={
+    MessageSid = request.body.MessageSid
+}
+response.message = Twilio.getMessage(parameters)
+
+--#ENDPOINT POST /twilio/deleteMessage
+local parameters ={
+    MessageSid = request.body.MessageSid
+}
+response.message = Twilio.deleteMessage(parameters)
+
+--#ENDPOINT POST /twilio/listMedia
+local parameters ={
+    MessageSid = request.body.MessageSid
+}
+response.message = Twilio.listMedia(parameters)
+
+--#ENDPOINT POST /twilio/getMedia
+
+local parameters ={
+    MessageSid = request.body.MessageSid,
+    MediaSid = request.body.MediaSid
+}
+response.message = Twilio.getMedia(parameters)
+
+--#ENDPOINT POST /twilio/deleteMedia
+local parameters ={
+    MessageSid = request.body.MessageSid,
+    MediaSid = request.body.MediaSid
+}
+response.message = Twilio.deleteMedia(parameters)
 
 --#ENDPOINT GET /twilio/createTwiml
 xml = [[
