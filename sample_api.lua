@@ -173,56 +173,76 @@ response.message = Timer.cancel(request.body)
 response.message = Timer.cancelAll()
 
 --#ENDPOINT GET /twilio/listCall
-local out = Twilio.listCall()
+local out = Twilio.listCall({
+  AccountSid = request.body.AccountSid,
+  AuthToken = request.body.AuthToken
+})
 response.message = out
 
 --#ENDPOINT POST /twilio/createCall
 local out = Twilio.createCall ({
   From = request.body.From,
   To = request.body.To,
-  Url = request.body.Url
+  Url = request.body.Url,
+  AccountSid = request.body.AccountSid,
+  AuthToken = request.body.AuthToken
  })
 response.message = out
 
 --#ENDPOINT GET /twilio/listMessage
-local out = Twilio.listMessage()
+local out = Twilio.listMessage({
+    AccountSid = request.body.AccountSid,
+    AuthToken = request.body.AuthToken
+})
 response.message = out
 
 --#ENDPOINT POST /twilio/postMessage
 local out = Twilio.postMessage({
   From = request.body.From,
   To = request.body.To,
-  Body = request.body.Body
+  Body = request.body.Body,
+  AccountSid = request.body.AccountSid,
+  AuthToken = request.body.AuthToken
 })
 response.message = out
 
 --#ENDPOINT POST /twilio/getCall
 local parameters ={
-    CallSid = request.body.CallSid
+    CallSid = request.body.CallSid,
+    AccountSid = request.body.AccountSid,
+    AuthToken = request.body.AuthToken
 }
 response.message = Twilio.getCall(parameters)
 
 --#ENDPOINT POST /twilio/deleteCall
 local parameters ={
-    CallSid = request.body.CallSid
+    CallSid = request.body.CallSid,
+    AccountSid = request.body.AccountSid,
+    AuthToken = request.body.AuthToken
 }
 response.message = Twilio.deleteCall(parameters)
 
 --#ENDPOINT POST /twilio/getMessage
 local parameters ={
-    MessageSid = request.body.MessageSid
+    MessageSid = request.body.MessageSid,
+    AccountSid = request.body.AccountSid,
+    AuthToken = request.body.AuthToken
 }
 response.message = Twilio.getMessage(parameters)
 
 --#ENDPOINT POST /twilio/deleteMessage
 local parameters ={
-    MessageSid = request.body.MessageSid
+    MessageSid = request.body.MessageSid,
+    AccountSid = request.body.AccountSid,
+    AuthToken = request.body.AuthToken
 }
 response.message = Twilio.deleteMessage(parameters)
 
 --#ENDPOINT POST /twilio/listMedia
 local parameters ={
-    MessageSid = request.body.MessageSid
+    MessageSid = request.body.MessageSid,
+    AccountSid = request.body.AccountSid,
+    AuthToken = request.body.AuthToken
 }
 response.message = Twilio.listMedia(parameters)
 
@@ -230,14 +250,18 @@ response.message = Twilio.listMedia(parameters)
 
 local parameters ={
     MessageSid = request.body.MessageSid,
-    MediaSid = request.body.MediaSid
+    MediaSid = request.body.MediaSid,
+    AccountSid = request.body.AccountSid,
+    AuthToken = request.body.AuthToken
 }
 response.message = Twilio.getMedia(parameters)
 
 --#ENDPOINT POST /twilio/deleteMedia
 local parameters ={
     MessageSid = request.body.MessageSid,
-    MediaSid = request.body.MediaSid
+    MediaSid = request.body.MediaSid,
+    AccountSid = request.body.AccountSid,
+    AuthToken = request.body.AuthToken
 }
 response.message = Twilio.deleteMedia(parameters)
 
