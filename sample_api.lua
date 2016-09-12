@@ -172,7 +172,7 @@ response.message = Timer.cancel(request.body)
 --#ENDPOINT GET /timer/cancelAll
 response.message = Timer.cancelAll()
 
---#ENDPOINT GET /twilio/listCall
+--#ENDPOINT POST /twilio/listCall
 local out = Twilio.listCall({
   AccountSid = request.body.AccountSid,
   AuthToken = request.body.AuthToken
@@ -189,7 +189,7 @@ local out = Twilio.createCall ({
  })
 response.message = out
 
---#ENDPOINT GET /twilio/listMessage
+--#ENDPOINT POST /twilio/listMessage
 local out = Twilio.listMessage({
     AccountSid = request.body.AccountSid,
     AuthToken = request.body.AuthToken
