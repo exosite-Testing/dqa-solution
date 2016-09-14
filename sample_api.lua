@@ -182,3 +182,6 @@ local parameters = {
 }
 
 return  Email.send(parameters)
+
+--#ENDPOINT GET /email/info
+response.message = Email.getSettings()
