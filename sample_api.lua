@@ -185,3 +185,33 @@ return  Email.send(parameters)
 
 --#ENDPOINT GET /email/info
 response.message = Email.getSettings()
+
+--#ENDPOINT POST /device/rpcCall
+local pid = request.body.pid
+local sn = request.body.sn
+local resource = request.body.res
+
+local calls = {}
+local ret = Device.rpcCall({pid = pid, calls = {{
+  id = "1",
+  procedure = "lookup",
+  arguments = {"alias", tostring(sn)}
+}}})
+if type(ret) ~= "table" then
+  return "error in lookup rpc call"
+end
+
+if ret[1].status ~= "ok" then
+  return "error in lookup: "..ret[1].result
+end
+local rid = ret[1].result
+for k, alias in ipairs(resource) do
+  table.insert(calls, {id=alias, procedure="read", arguments={{alias=alias}, {limit=1}}})
+end
+local rpcret = Device.rpcCall({
+  pid = pid,
+  auth = {client_id = rid},
+  calls = calls
+})
+
+return rpcret
