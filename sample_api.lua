@@ -177,7 +177,7 @@ response.message = User.assignUser(parameters)
 
 --#ENDPOINT POST /user/getSocial
 local parameters = {
-  consumer = requset.body.consumer
+  consumer = request.body.consumer
 }
 response.message = User.getSocial(parameters)
 
