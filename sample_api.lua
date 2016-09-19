@@ -339,6 +339,14 @@ local parameters = {
 }
 response.message = User.resetUserPassword(parameters)
 
+--#ENDPOINT POST /user/deassignUser
+response.message = User.deassignUser(parameters)
+local parameters = {
+  id = request.body.id,
+  role_id = request.body.roleId
+}
+response.message = User.deassignUser(parameters)
+
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
 response.message = resp
