@@ -159,7 +159,7 @@ return User.getUserToken(parameters)
 
 --#ENDPOINT POST /user/deletePerms
 local parameters = {
-  ["perm_id"] = request.body.permId
+  perm_id = request.body.permId
 }
 return User.deletePerm(parameters)
 
@@ -320,6 +320,24 @@ local parameters = {
   role_id = request.body.roleId
 }
 response.message = User.listRoleUsers(parameters)
+
+--#ENDPOINT POST /user/addRoleParam
+local parameters = {
+  role_id = request.body.id,
+  body = {
+    {
+      name = request.body.name
+    }
+  }
+}
+response.message = User.addRoleParam(parameters)
+
+--#ENDPOINT POST /user/resetUserPassword
+local parameters = {
+  id = request.body.id,
+  password = request.body.password
+}
+response.message = User.resetUserPassword(parameters)
 
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
