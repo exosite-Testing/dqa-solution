@@ -344,6 +344,13 @@ resp = Timer.schedule(request.body)
 response.message = resp
 response.code = resp.status
 
+response.message = User.deassignUser(parameters)
+local parameters = {
+  id = request.body.id,
+  role_id = request.body.roleId
+}
+response.message = User.deassignUser(parameters)
+
 --#ENDPOINT POST /timer/sendAfter
 response.message = Timer.sendAfter(request.body)
 
