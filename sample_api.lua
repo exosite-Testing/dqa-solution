@@ -197,7 +197,7 @@ local r = ""
 local randnum = 0
 local randwordlen = 0
 math.randomseed(os.time())
-randnum = math.random(1,1)
+randnum = math.random(1,10)
 for i = 1,randnum do
   randwordlen = math.random(1,10)
   str = ""
