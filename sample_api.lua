@@ -268,6 +268,43 @@ local parameters = {
 }
 response.message = User.listUserData(parameters)
 
+--#ENDPOINT POST /user/updateUserData
+key = request.body.key
+value = request.body.value
+parameters = {id = request.body.id}
+keyt = {}
+valuet = {}
+i=0
+if key ~= nil and value ~= nil then
+  i=0
+  for str in string.gmatch(key, "([^" .. "," .. "]+)") do
+    i=i+1
+    keyt[i] = str
+  end
+  i=0
+  for str in string.gmatch(value, "([^" .. "," .. "]+)") do
+    i=i+1
+    valuet[i] = str
+  end
+  if keyt ~= nil and valuet ~= nil then
+    for num=1,i do
+      local key_temp = keyt[num]
+      local value_temp = valuet[num]
+      parameters[key_temp] = value_temp
+    end
+    return User.updateUserData(parameters)
+  else
+    return "No value"
+  end
+end
+
+--#ENDPOINT POST /user/getUserData
+local parameters = {
+  id = request.body.id,
+  key = request.body.key
+}
+return User.getUserData(parameters)
+
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
 response.message = resp
