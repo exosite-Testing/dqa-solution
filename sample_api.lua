@@ -190,7 +190,7 @@ local parameters = {
 }
 return User.updateSocial(parameters)
 
---#ENDPOINT POST /user/random
+--#ENDPOINT GET /user/random
 local s = ""
 local str = ""
 local r = ""
