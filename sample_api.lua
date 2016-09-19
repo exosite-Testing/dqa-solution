@@ -312,6 +312,12 @@ local parameters = {
   }
 response.message = User.deleteUserData(parameters)
 
+--#ENDPOINT POST /user/listRoleUsers
+local parameters = {
+  role_id = request.body.roleId
+}
+response.message = User.listRoleUsers(parameters)
+
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
 response.message = resp
