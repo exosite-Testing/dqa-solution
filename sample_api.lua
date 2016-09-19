@@ -129,7 +129,7 @@ response.message = User.deleteRole(parameters)
 --#ENDPOINT GET /user/listPerms
 return User.listPerms()
 
---#ENDPOINT POST /user/createPrems
+--#ENDPOINT POST /user/createPerms
 local parameters = {
   end_point = request.body.endpoint,
   method = request.body.method
@@ -151,7 +151,7 @@ return User.getUserToken(parameters)
 
 --#ENDPOINT POST /user/deletePerms
 local parameters = {
-  ["perm_id"] = request.body.permid
+  ["perm_id"] = request.body.permId
 }
 return User.deletePerm(parameters)
 
@@ -160,10 +160,10 @@ response.message = User.listUserRoles({id = request.body.id})
 
 --#ENDPOINT POST /user/assignUser
 local parameters = {
-  id = request.body.userid,
+  id = request.body.userId,
   roles = {
     {
-      role_id = request.body.roleid,
+      role_id = request.body.roleId,
       parameters = {
         {
           name = request.body.name,
