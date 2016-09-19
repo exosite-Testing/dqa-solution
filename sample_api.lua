@@ -251,11 +251,17 @@ if key ~= nil and value ~= nil then
       local value_temp = valuet[num]
       parameters[key_temp] = value_temp
     end
-    return User.createUserData(parameters)
+    response = User.createUserData(parameters)
   else
     return "No value"
   end
 end
+
+--#ENDPOINT POST /user/listUserData
+local parameters = {
+  id = request.body.id;
+}
+response.message = User.listUserData(parameters)
 
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
