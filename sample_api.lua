@@ -352,13 +352,6 @@ resp = Timer.schedule(request.body)
 response.message = resp
 response.code = resp.status
 
-response.message = User.deassignUser(parameters)
-local parameters = {
-  id = request.body.id,
-  role_id = request.body.roleId
-}
-response.message = User.deassignUser(parameters)
-
 --#ENDPOINT POST /timer/sendAfter
 response.message = Timer.sendAfter(request.body)
 
@@ -372,7 +365,7 @@ response.message = Timer.cancel(request.body)
 response.message = Timer.cancelAll()
 
 --#ENDPOINT GET /twilio/listCall
-return Twilio.listCall()
+response.message = Twilio.listCall()
 
 --#ENDPOINT POST /twilio/createCall
 local out = Twilio.createCall({
@@ -380,10 +373,10 @@ local out = Twilio.createCall({
   To = request.body.To,
   Url = request.body.Url
  })
-return out
+response.message = out
 
 --#ENDPOINT GET /twilio/listMessage
-return Twilio.listMessage()
+response.message = Twilio.listMessage()
 
 --#ENDPOINT POST /twilio/postMessage
 local out = Twilio.postMessage({
@@ -391,51 +384,51 @@ local out = Twilio.postMessage({
   To = request.body.To,
   Body = request.body.Body
 })
-return out
+response.message = out
 
 --#ENDPOINT POST /twilio/getCall
 local parameters ={
   CallSid = request.body.CallSid
 }
-return Twilio.getCall(parameters)
+response.message = Twilio.getCall(parameters)
 
 --#ENDPOINT POST /twilio/deleteCall
 local parameters ={
   CallSid = request.body.CallSid
 }
-return Twilio.deleteCall(parameters)
+response.message = Twilio.deleteCall(parameters)
 
 --#ENDPOINT POST /twilio/getMessage
 local parameters ={
   MessageSid = request.body.MessageSid
 }
-return Twilio.getMessage(parameters)
+response.message = Twilio.getMessage(parameters)
 
 --#ENDPOINT POST /twilio/deleteMessage
 local parameters ={
   MessageSid = request.body.MessageSid
 }
-return Twilio.deleteMessage(parameters)
+response.message = Twilio.deleteMessage(parameters)
 
 --#ENDPOINT POST /twilio/listMedia
 local parameters ={
   MessageSid = request.body.MessageSid
 }
-return Twilio.listMedia(parameters)
+response.message = Twilio.listMedia(parameters)
 
 --#ENDPOINT POST /twilio/getMedia
 local parameters ={
   MessageSid = request.body.MessageSid,
   MediaSid = request.body.MediaSid
 }
-return Twilio.getMedia(parameters)
+response.message = Twilio.getMedia(parameters)
 
 --#ENDPOINT POST /twilio/deleteMedia
 local parameters ={
   MessageSid = request.body.MessageSid,
   MediaSid = request.body.MediaSid
 }
-return Twilio.deleteMedia(parameters)
+response.message = Twilio.deleteMedia(parameters)
 
 --#ENDPOINT GET /twilio/createTwiml
 xml = [[
@@ -444,7 +437,7 @@ xml = [[
     <Say voice="woman">You got a call!</Say>
 </Response>
 ]]
-return xml
+response.message = xml
 
 --#ENDPOINT GET /keystore/info
 response.message = Keystore.info()
