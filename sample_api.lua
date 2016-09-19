@@ -202,15 +202,25 @@ for i = 1,randnum do
   randwordlen = math.random(1,10)
   str = ""
   for j = 1,randwordlen do
-    local ty = math.random(1,3)
-    if ty == 1 then
-      r = math.random(48,57)
-    elseif ty == 2 then
-      r = math.random(65,90)
+    if j == 1 then
+      local ty = math.random(1,2)
+        if ty == 1 then
+          r = math.random(65,90)
+        else
+          r = math.random(97,122)
+        end
+        r = string.char(r)
     else
-      r = math.random(97,122)
+      local ty = math.random(1,3)
+      if ty == 1 then
+        r = math.random(48,57)
+      elseif ty == 2 then
+        r = math.random(65,90)
+      else
+        r = math.random(97,122)
+      end
+      r = string.char(r)
     end
-    r = string.char(r)
     str = str .. r
   end
   s = s .. str .. ","
