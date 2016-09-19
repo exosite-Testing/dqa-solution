@@ -372,6 +372,63 @@ local parameters = {
 }
 return User.deleteRolePerm(parameters)
 
+--#ENDPOINT POST /user/deassignUserParam
+local parameters = {
+  role_id = request.body.roleid,
+  parameter_name = request.body.name,
+  parameter_value = request.body.value,
+  id = request.body.userid
+}
+response.message = User.deassignUserParam(parameters)
+
+--#ENDPOINT POST /user/deassignUserParamName
+local parameters = {
+  id = request.body.userid,
+  role_id = request.body.roleid,
+  parameter_name = request.body.name
+}
+response.message = User.deassignUserParamName(parameters)
+
+--#ENDPOINT POST /user/deleteRoleParam
+local parameters = {
+  role_id = request.body.id,
+  parameter_name = request.body.name
+}
+response.message = User.deleteRoleParam(parameters)
+
+--#ENDPOINT POST /user/deleteRoleParamValue
+local parameters = {
+  role_id = request.body.id,
+  parameter_name = request.body.name,
+  parameter_value = request.body.value
+}
+response.message = User.deleteRoleParamValue(parameters)
+
+--#ENDPOINT POST /user/hasUserRoleParam
+local parameters = {
+  role_id = request.body.roleid,
+  parameter_name = request.body.name,
+  parameter_value = request.body.value,
+  id = request.body.userid
+}
+response.message = User.hasUserRoleParam(parameters)
+
+--#ENDPOINT POST /user/listRoleParamUsers
+local parameters = {
+  role_id = request.body.roleid,
+  parameter_name = request.body.name,
+  parameter_value = request.body.value
+}
+response.message = User.listRoleParamUsers(parameters)
+
+--#ENDPOINT POST /user/listUserRoleParamValues
+local parameters = {
+  id = request.body.userid,
+  role_id = request.body.roleid,
+  parameter_name = request.body.name
+}
+response.message = User.listUserRoleParamValues(parameters)
+
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
 response.message = resp
