@@ -215,7 +215,7 @@ for i = 1,randnum do
   end
   s = s .. str .. ","
 end
-return str
+return s
 
 --#ENDPOINT POST /user/createUserData
 key = request.body.key
