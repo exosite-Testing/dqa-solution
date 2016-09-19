@@ -305,6 +305,13 @@ local parameters = {
 }
 return User.getUserData(parameters)
 
+--#ENDPOINT POST /user/deleteUserData
+local parameters = {
+  id = request.body.id,
+  keys = {request.body.keys}
+  }
+response.message = User.deleteUserData(parameters)
+
 --#ENDPOINT POST /timer/schedule
 resp = Timer.schedule(request.body)
 response.message = resp
