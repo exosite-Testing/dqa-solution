@@ -310,3 +310,18 @@ response.message = xml
 
 --#ENDPOINT GET /keystore/info
 response.message = Keystore.info()
+
+--#ENDPOINT GET /email
+local parameters = {
+  from = "testing@exosite.com",
+  to = {
+    "testing@exosite.com",
+  },
+  subject = "Hello",
+  text = "World",
+}
+
+return  Email.send(parameters)
+
+--#ENDPOINT GET /email/info
+response.message = Email.getSettings()
