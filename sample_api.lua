@@ -311,17 +311,19 @@ response.message = xml
 --#ENDPOINT GET /keystore/info
 response.message = Keystore.info()
 
---#ENDPOINT GET /email
-local parameters = {
-  from = "testing@exosite.com",
+--#ENDPOINT POST /postemail/{myemail}
+local myemail = request.parameters.myemail
+
+local emailData = {
+  from = myemail,
   to = {
-    "testing@exosite.com",
+    myemail,
   },
   subject = "Hello",
   text = "World",
-}
-
-return  Email.send(parameters)
+  html = "<p><b>World</b></p>"
+ }
+return Email.send(emailData)
 
 --#ENDPOINT GET /email/info
 response.message = Email.getSettings()
