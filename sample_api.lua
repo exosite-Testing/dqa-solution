@@ -311,7 +311,7 @@ response.message = xml
 --#ENDPOINT GET /keystore/info
 response.message = Keystore.info()
 
---#ENDPOINT POST /postemail/{myemail}
+--#ENDPOINT POST /email/send/{myemail}
 local myemail = request.parameters.myemail
 
 local emailData = {
