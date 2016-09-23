@@ -311,18 +311,18 @@ response.message = xml
 --#ENDPOINT GET /keystore/info
 response.message = Keystore.info()
 
---#ENDPOINT POST /email/send/{myemail}
-local myemail = request.parameters.myemail
-
+--#ENDPOINT POST /email/send
+local to = request.body.to
+local subject = request.body.subject
+local text = request.body.text
+ 
 local emailData = {
-  from = myemail,
   to = {
-    myemail,
+    to,
   },
-  subject = "Hello",
-  text = "World",
-  html = "<p><b>World</b></p>"
- }
+  subject = subject,
+  text = text,
+}
 return Email.send(emailData)
 
 --#ENDPOINT GET /email/info
