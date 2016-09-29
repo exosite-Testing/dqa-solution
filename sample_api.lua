@@ -313,20 +313,22 @@ response.message = xml
 response.message = Keystore.info()
 
 --#ENDPOINT POST /email/send
-local to = request.body.to
+local toEmail = request.body.toEmail
 local subject = request.body.subject
 local text = request.body.text
+local html = request.body.html
 
 local emailData = {
   to = {
-    to,
+    toEmail,
   },
   subject = subject,
   text = text,
+  html = html,
 }
 return Email.send(emailData)
 
---#ENDPOINT GET /email/info
+--#ENDPOINT POST /email/info
 response.message = Email.getSettings()
 
 --#ENDPOINT POST /device/rpcCall
