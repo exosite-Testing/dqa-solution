@@ -27,6 +27,11 @@ return Keystore.clear()
 local res = Keystore.set({key=request.body.key, value=request.body.value})
 return res
 
+--#ENDPOINT POST /keystore/set500Data
+for i = 1, 500, 1 do
+Keystore.set({ key = "key" .. i, value = "value" .. i})
+end
+
 --#ENDPOINT GET /keystore/key/{key}
 res = Keystore.get({key=request.parameters.key})
 return res
