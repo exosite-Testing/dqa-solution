@@ -25,7 +25,8 @@ return Keystore.clear()
 
 --#ENDPOINT POST /keystore/set
 local res = Keystore.set({key=request.body.key, value=request.body.value})
-return res
+response.message = res
+response.code = res.status
 
 --#ENDPOINT POST /keystore/set/{firstNumber}/{endNumber}
 local firstNumber = request.parameters.firstNumber
