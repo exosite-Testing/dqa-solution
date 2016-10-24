@@ -349,13 +349,13 @@ response.message = User.deassignUser(parameters)
 
 --#ENDPOINT POST /user/listRolePerms
 local parameters = {
-["role_id"] = request.body.id
+role_id = request.body.roleId
 }
 response.message = User.listRolePerms(parameters)
 
 --#ENDPOINT POST /user/addRolePerm
 local parameters = {
-      role_id = request.body.id,
+      role_id = request.body.roleId,
       body = {
       {
       method = request.body.method,
@@ -367,7 +367,7 @@ response.message = User.addRolePerm(parameters)
 
 --#ENDPOINT POST /user/deleteRolePerm
 local parameters = {
-  role_id = request.body.id,
+  role_id = request.body.roleId,
   perm_id = request.body.permId
 }
 return User.deleteRolePerm(parameters)
