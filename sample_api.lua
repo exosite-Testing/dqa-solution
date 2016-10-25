@@ -365,6 +365,14 @@ local parameters = {
   }
 response.message = User.addRolePerm(parameters)
 
+--#ENDPOINT POST /user/hasUserPerm
+local parameters = {
+  id = request.body.userId,
+  perm_id = request.body.permId,
+  parameters = request.body.parameter
+}
+return User.hasUserPerm(parameters)
+
 --#ENDPOINT POST /user/deleteRolePerm
 local parameters = {
   role_id = request.body.roleId,
