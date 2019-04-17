@@ -1,0 +1,55 @@
+// Typography for material design: http://brm.io/material-design-type/
+body {
+  color: #333;
+  font-family: 'RobotoDraft', 'Roboto', 'Open Sans', "Segoe UI", Candara, "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-weight: 400;
+}
+
+// by default the rest of the elements should be equivelant to text-body
+a,
+dl,
+dd,
+dt,
+input {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25px;
+}
+
+a {
+  color: #00bcd6;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+p {
+  font-size: 14px;
+  line-height: 14px;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: 52px;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 38px;
+}
+
+h3 {
+  font-size: 21px;
+  line-height: 30px;
+}

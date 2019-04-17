@@ -1,0 +1,41 @@
+@import 'variables';
+@import 'base';
+@import 'typography';
+@import 'container';
+@import 'message';
+@import 'page-header';
+@import 'fab';
+@import 'dialog';
+@import 'card';
+
+footer.version {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.logo-container {
+  h1 {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  h4 {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #CBCBCB;
+    margin-top: 0px;
+  }
+
+  margin: 15px auto;
+  left: 54%;
+  text-align: center;
+
+  img {
+    width: 40px;
+    text-align: center;
+  }
+}

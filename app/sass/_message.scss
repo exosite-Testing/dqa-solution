@@ -1,0 +1,25 @@
+/* Message Boxes */
+.message {
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.message--info {
+  background-color: #fff;
+  color: #00529b;
+}
+
+.message--success {
+  background-color: #eff2bf;
+  color: #4f8a10;
+}
+
+.message--warning {
+  background-color: #feefb3;
+  color: #9f6000;
+}
+
+.message--error {
+  background-color: #ffbaba;
+  color: #d8000c;
+}

@@ -1,0 +1,55 @@
+.card {
+  margin-bottom: 24px;
+  padding: 24px;
+  position: relative;
+}
+
+.card--small {
+  max-width: 304px;
+}
+
+.card--bulb {
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    background-color: #eee !important;
+  }
+}
+
+.card--disabled {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  cursor: default;
+}
+
+// .card__icon {}
+
+.card__text--button {
+  color: #ff3b80;
+  font-size: 24px;
+  margin-top: 24px;
+}
+
+.card--temp {
+  background-color: #f05a24 !important;
+  color: #fff !important;
+  text-align: center;
+}
+
+.card--humidity {
+  background-color: #29aae1 !important;
+  color: #fff !important;
+  text-align: center;
+}
+
+.card__text--value {
+  font-size: 84px;
+  font-weight: 300;
+  line-height: 84px;
+}
+
+.card__text--label {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 18px;
+}

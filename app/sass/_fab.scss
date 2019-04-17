@@ -1,0 +1,17 @@
+.fab-outer-container {
+  bottom: 24px;
+  position: fixed;
+  width: 100%;
+}
+
+.fab-inner-container {
+  margin: 0 auto;
+  max-width: $container-width;
+  position: relative;
+}
+
+.fab {
+  bottom: 0;
+  position: absolute;
+  right: 24px;
+}

@@ -1,0 +1,29 @@
+// ===== FLOATING ACTION BUTTON =====
+.FAB-outer-container {
+  bottom: 24px;
+  position: fixed;
+  width: 100%;
+}
+
+.FAB-inner-container {
+  margin: 0 auto;
+  max-width: $container-width;
+  position: relative;
+}
+
+.FAB {
+  position: absolute;
+  right: 24px;
+  bottom: 0;
+}
+
+// ====== DIALOG ======
+// .dialog {}
+.dialog__actions {
+  text-align: right;
+  margin: 20px 0 -20px;
+}
+
+.dialog__body {
+  margin-top: -20px;
+}

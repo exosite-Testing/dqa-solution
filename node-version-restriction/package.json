@@ -1,0 +1,8 @@
+{
+  "name": "example-app-minimum-node-version",
+  "version": "0.12.0",
+  "engines": {
+    "node": ">=0.12"
+  },
+  "engineStrict": true
+}

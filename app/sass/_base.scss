@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #e6e7e7;
+}
+
+.auth-page {
+  background: #fff;
+  height: 100%;
+  overflow: auto;
+}
+
+.logo {
+  width: 30px;
+  display: inline-block;
+  height: 100%;
+  margin-left: -3px; // make it look more centered
+}
+
+.navbar__button-icon {
+  padding-top: 6px;
+}
